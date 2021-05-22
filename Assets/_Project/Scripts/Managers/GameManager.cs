@@ -18,14 +18,14 @@ public class GameManager : MonoBehaviour
                 case GameState.PREPARE:
                     //Set relevant panel
 
-                    UIManager.Instance.ShowPreparePanel();
-                    //UIManager.Instance.ShowMenuPanel();
+                    //UIManager.Instance.ShowPreparePanel();
+                    UIManager.Instance.ShowMenuPanel();
                     break;
                 case GameState.GAME:
                     UIManager.Instance.ShowGamePanel();
                     break;
                 case GameState.DEATH_TIMER:
-                    UIManager.Instance.OpenDeathTimerPanel();
+                    UIManager.Instance.ShowDeathCounterPanel();
                     break;
                 case GameState.SUCCESS:
                     SUCCESS();

@@ -15,8 +15,9 @@ namespace GameType
 
     public enum Panel
     {
+		DEATH_COUNTER,
 		GAME,
-		MENU,
+		MAIN_MENU,
 		PREPARE,
 		RESULT,
 		SETTINGS,

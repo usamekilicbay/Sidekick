@@ -1,10 +1,8 @@
 using Constants;
 using UnityEditor;
 using UnityEngine;
-using System;
-using static Constants.GameObjectName.Canvas;
-using static Constants.GameObjectName.Panel;
 using static Constants.AssetPath.Prefab;
+using static Constants.GameObjectName.Canvas;
 using static Constants.GameObjectName;
 
 public class SideUI : MonoBehaviour
@@ -13,7 +11,7 @@ public class SideUI : MonoBehaviour
     [MenuItem(MenuItemPath.SIDE_UI + MenuItemPath.CREATE + " All Panels #F8")]
     private static void CreateAllPanels()
     {
-        if (!GameObject.Find("UI Manager"))
+        if (!GameObject.Find(Manager.UI))
         {
             DestroyImmediate(GetPanelParent());
             EditorUtility.DisplayDialog("UI Manager is not exist!", "You can not add a panel if UI Manager is not exist current scene", "Okay mate, i will add a UI Manager");
@@ -21,6 +19,7 @@ public class SideUI : MonoBehaviour
             return;
         }
 
+        CreateDeathCounterPanel(true);
         CreateGamePanel(true);
         CreateMainMenuPanel(true);
         CreatePreparePanel(true);
@@ -29,13 +28,13 @@ public class SideUI : MonoBehaviour
         CreateShopPanel(true);
     }
 
-    #region DEATH TIMER PANEL
-    [MenuItem(MenuItemPath.SIDE_UI + MenuItemPath.CREATE + "Death Timer Panel")]
-    private static void CallCreateDeathTimerPanel() => CreateCreateDeathTimerPanel();
+    #region DEATH COUNTER PANEL
+    [MenuItem(MenuItemPath.SIDE_UI + MenuItemPath.CREATE + "Death Counter Panel")]
+    private static void CallCreateDeathCounterPanel() => CreateDeathCounterPanel();
 
-    private static void CreateCreateDeathTimerPanel(bool bunchCreated = false)
+    private static void CreateDeathCounterPanel(bool bunchCreated = false)
     {
-        if (!bunchCreated && !GameObject.Find("UI Manager"))
+        if (!bunchCreated && !GameObject.Find(Manager.UI))
         {
             Warning.UIManagerIsNotExistErrorDisplay();
             DestroyImmediate(GetPanelParent());
@@ -43,15 +42,15 @@ public class SideUI : MonoBehaviour
             return;
         }
 
-        if (GameObject.Find(DEATH_TIMER_PANEL))
+        if (GameObject.Find(Panel.DEATH_COUNTER))
         {
-            Warning.PanelAlreadyExistErrorDisplay(DEATH_TIMER_PANEL, bunchCreated);
+            Warning.PanelAlreadyExistErrorDisplay(Panel.DEATH_COUNTER, bunchCreated);
 
             return;
         }
 
-        GameObject deathTimerPanel = Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>(StringExtension.GetPrefabPath(PANEL, DEATH_TIMER_PANEL)));
-        SetPanelProperties(deathTimerPanel, DEATH_TIMER_PANEL, "deathTimerPanel", false);
+        GameObject deathCounterPanel = Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>(StringExtension.GetPrefabPath(PANEL, Panel.DEATH_COUNTER)));
+        SetPanelProperties(deathCounterPanel, Panel.DEATH_COUNTER, "deathCounterPanel", false);
     }
     #endregion
 
@@ -61,7 +60,7 @@ public class SideUI : MonoBehaviour
 
     private static void CreateGamePanel(bool bunchCreated = false)
     {
-        if (!bunchCreated && !GameObject.Find("UI Manager"))
+        if (!bunchCreated && !GameObject.Find(Manager.UI))
         {
             Warning.UIManagerIsNotExistErrorDisplay();
             DestroyImmediate(GetPanelParent());
@@ -69,15 +68,15 @@ public class SideUI : MonoBehaviour
             return;
         }
 
-        if (GameObject.Find(GAME_PANEL))
+        if (GameObject.Find(Panel.GAME))
         {
-            Warning.PanelAlreadyExistErrorDisplay(GAME_PANEL, bunchCreated);
+            Warning.PanelAlreadyExistErrorDisplay(Panel.GAME, bunchCreated);
 
             return;
         }
 
-        GameObject gamePanel = Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>(StringExtension.GetPrefabPath(PANEL, GAME_PANEL)));
-        SetPanelProperties(gamePanel, GAME_PANEL, "gamePanel");
+        GameObject gamePanel = Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>(StringExtension.GetPrefabPath(PANEL, Panel.GAME)));
+        SetPanelProperties(gamePanel, Panel.GAME, "gamePanel");
     }
     #endregion
 
@@ -87,7 +86,7 @@ public class SideUI : MonoBehaviour
 
     private static void CreateMainMenuPanel(bool bunchCreated = false)
     {
-        if (!bunchCreated && !GameObject.Find("UI Manager"))
+        if (!bunchCreated && !GameObject.Find(Manager.UI))
         {
             Warning.UIManagerIsNotExistErrorDisplay();
             DestroyImmediate(GetPanelParent());
@@ -95,15 +94,15 @@ public class SideUI : MonoBehaviour
             return;
         }
 
-        if (GameObject.Find(MAIN_MENU_PANEL))
+        if (GameObject.Find(Panel.MAIN_MENU))
         {
-            Warning.PanelAlreadyExistErrorDisplay(MAIN_MENU_PANEL, bunchCreated);
+            Warning.PanelAlreadyExistErrorDisplay(Panel.MAIN_MENU, bunchCreated);
 
             return;
         }
 
-        GameObject mainMenuPanel = Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>(StringExtension.GetPrefabPath(PANEL, MAIN_MENU_PANEL)));
-        SetPanelProperties(mainMenuPanel, MAIN_MENU_PANEL, "mainMenuPanel");
+        GameObject mainMenuPanel = Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>(StringExtension.GetPrefabPath(PANEL, Panel.MAIN_MENU)));
+        SetPanelProperties(mainMenuPanel, Panel.MAIN_MENU, "mainMenuPanel");
     }
     #endregion
 
@@ -113,7 +112,7 @@ public class SideUI : MonoBehaviour
 
     private static void CreatePreparePanel(bool bunchCreated = false)
     {
-        if (!bunchCreated && !GameObject.Find("UI Manager"))
+        if (!bunchCreated && !GameObject.Find(Manager.UI))
         {
             Warning.UIManagerIsNotExistErrorDisplay();
             DestroyImmediate(GetPanelParent());
@@ -121,15 +120,15 @@ public class SideUI : MonoBehaviour
             return;
         }
 
-        if (GameObject.Find(PREPARE_PANEL))
+        if (GameObject.Find(Panel.PREPARE))
         {
-            Warning.PanelAlreadyExistErrorDisplay(PREPARE_PANEL, bunchCreated);
+            Warning.PanelAlreadyExistErrorDisplay(Panel.PREPARE, bunchCreated);
 
             return;
         }
 
-        GameObject preparePanel = Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>(StringExtension.GetPrefabPath(PANEL, PREPARE_PANEL)));
-        SetPanelProperties(preparePanel, PREPARE_PANEL, "preparePanel");
+        GameObject preparePanel = Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>(StringExtension.GetPrefabPath(PANEL, Panel.PREPARE)));
+        SetPanelProperties(preparePanel, Panel.PREPARE, "preparePanel");
     }
     #endregion
 
@@ -139,7 +138,7 @@ public class SideUI : MonoBehaviour
 
     private static void CreateResultPanel(bool bunchCreated = false)
     {
-        if (!bunchCreated && !GameObject.Find("UI Manager"))
+        if (!bunchCreated && !GameObject.Find(Manager.UI))
         {
             Warning.UIManagerIsNotExistErrorDisplay();
             DestroyImmediate(GetPanelParent());
@@ -147,15 +146,15 @@ public class SideUI : MonoBehaviour
             return;
         }
 
-        if (GameObject.Find(RESULT_PANEL))
+        if (GameObject.Find(Panel.RESULT))
         {
-            Warning.PanelAlreadyExistErrorDisplay(RESULT_PANEL, bunchCreated);
+            Warning.PanelAlreadyExistErrorDisplay(Panel.RESULT, bunchCreated);
 
             return;
         }
 
-        GameObject resultPanel = Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>(StringExtension.GetPrefabPath(PANEL, RESULT_PANEL)));
-        SetPanelProperties(resultPanel, RESULT_PANEL, "resultPanel", false);
+        GameObject resultPanel = Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>(StringExtension.GetPrefabPath(PANEL, Panel.RESULT)));
+        SetPanelProperties(resultPanel, Panel.RESULT, "resultPanel", false);
     }
     #endregion
 
@@ -165,7 +164,7 @@ public class SideUI : MonoBehaviour
 
     private static void CreateSettingsPanel(bool bunchCreated = false)
     {
-        if (!bunchCreated && !GameObject.Find("UI Manager"))
+        if (!bunchCreated && !GameObject.Find(Manager.UI))
         {
             Warning.UIManagerIsNotExistErrorDisplay();
             DestroyImmediate(GetPanelParent());
@@ -173,15 +172,15 @@ public class SideUI : MonoBehaviour
             return;
         }
 
-        if (GameObject.Find(SETTINGS_PANEL))
+        if (GameObject.Find(Panel.SETTINGS))
         {
-            Warning.PanelAlreadyExistErrorDisplay(SETTINGS_PANEL, bunchCreated);
+            Warning.PanelAlreadyExistErrorDisplay(Panel.SETTINGS, bunchCreated);
 
             return;
         }
 
-        GameObject settingsPanel = Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>(StringExtension.GetPrefabPath(PANEL, SETTINGS_PANEL)));
-        SetPanelProperties(settingsPanel, SETTINGS_PANEL, "settingsPanel", false);
+        GameObject settingsPanel = Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>(StringExtension.GetPrefabPath(PANEL, Panel.SETTINGS)));
+        SetPanelProperties(settingsPanel, Panel.SETTINGS, "settingsPanel", false);
     }
     #endregion
 
@@ -191,7 +190,7 @@ public class SideUI : MonoBehaviour
 
     private static void CreateShopPanel(bool bunchCreated = false)
     {
-        if (!bunchCreated && !GameObject.Find("UI Manager"))
+        if (!bunchCreated && !GameObject.Find(Manager.UI))
         {
             Warning.UIManagerIsNotExistErrorDisplay();
             DestroyImmediate(GetPanelParent());
@@ -199,15 +198,15 @@ public class SideUI : MonoBehaviour
             return;
         }
 
-        if (GameObject.Find(SHOP_PANEL))
+        if (GameObject.Find(Panel.SHOP))
         {
-            Warning.PanelAlreadyExistErrorDisplay(SHOP_PANEL, bunchCreated);
+            Warning.PanelAlreadyExistErrorDisplay(Panel.SHOP, bunchCreated);
 
             return;
         }
 
-        GameObject shopPanel = Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>(StringExtension.GetPrefabPath(PANEL, SHOP_PANEL)));
-        SetPanelProperties(shopPanel, SHOP_PANEL, "shopPanel");
+        GameObject shopPanel = Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>(StringExtension.GetPrefabPath(PANEL, Panel.SHOP)));
+        SetPanelProperties(shopPanel, Panel.SHOP, "shopPanel");
     }
     #endregion
 

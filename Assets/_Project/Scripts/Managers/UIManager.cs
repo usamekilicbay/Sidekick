@@ -5,22 +5,24 @@ using UnityEngine;
 
 public class UIManager : Singleton<UIManager>
 {
-    [Header("Panel")]
-    [SerializeField] private GameObject deathTimerPanel;
+    [Header("Panels")]
+    [SerializeField] private GameObject deathCounterPanel;
     [SerializeField] private GameObject gamePanel;
-    [SerializeField] private GameObject menuPanel;
+    [SerializeField] private GameObject mainMenuPanel;
     [SerializeField] private GameObject preparePanel;
     [SerializeField] private GameObject resultPanel;
     [SerializeField] private GameObject settingsPanel;
     [SerializeField] private GameObject shopPanel;
 
+    public void ShowDeathCounterPanel() => PanelChanger(Panel.DEATH_COUNTER);
+    
     public void ShowGamePanel() => PanelChanger(Panel.GAME);
 
-    public void ShowMenuPanel() => PanelChanger(Panel.MENU);
-
-    public void ShowResultPanel() => PanelChanger(Panel.RESULT);
+    public void ShowMenuPanel() => PanelChanger(Panel.MAIN_MENU);
 
     public void ShowPreparePanel() => PanelChanger(Panel.PREPARE);
+
+    public void ShowResultPanel() => PanelChanger(Panel.RESULT);
 
     public void ShowSettingsPanel() => PanelChanger(Panel.SETTINGS);
 
@@ -28,16 +30,12 @@ public class UIManager : Singleton<UIManager>
 
     private void PanelChanger(Panel panel)
     {
+        deathCounterPanel.SetActive(panel == Panel.DEATH_COUNTER);
         gamePanel.SetActive(panel == Panel.GAME);
-        menuPanel.SetActive(panel == Panel.MENU);
+        mainMenuPanel.SetActive(panel == Panel.MAIN_MENU);
         preparePanel.SetActive(panel == Panel.PREPARE);
         resultPanel.SetActive(panel == Panel.RESULT);
         settingsPanel.SetActive(panel == Panel.SETTINGS);
         shopPanel.SetActive(panel == Panel.SHOP);
-    }
-
-    public void OpenDeathTimerPanel()
-    {
-        deathTimerPanel.SetActive(true);
     }
 }

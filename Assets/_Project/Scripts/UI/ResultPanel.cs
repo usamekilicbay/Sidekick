@@ -19,7 +19,6 @@ public class ResultPanel : EventProvider
 
     [Header("Buttons")]
     [SerializeField] private Button playAgainButton;
-    [SerializeField] private Button watchRewardedAdButton;
 
     [Header("Texts")]
     [SerializeField] private TextMeshProUGUI highScoreText;

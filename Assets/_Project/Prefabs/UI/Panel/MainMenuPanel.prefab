@@ -226,7 +226,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5721809642464296004}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -481,8 +481,8 @@ RectTransform:
   - {fileID: 5721809641349122404}
   - {fileID: 5721809642042493280}
   - {fileID: 5721809642478344603}
-  - {fileID: 5721809642687479402}
   - {fileID: 5721809641703836012}
+  - {fileID: 5721809642687479402}
   - {fileID: 5721809642591715087}
   - {fileID: 5721809641460590146}
   m_Father: {fileID: 0}
@@ -513,11 +513,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e9b4b5bd6c23aa48be6b2fb6eac6487, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playButton: {fileID: 0}
-  settingsButton: {fileID: 0}
-  shopButton: {fileID: 0}
-  rateUsButton: {fileID: 0}
-  leaderboardButton: {fileID: 0}
+  playButton: {fileID: 5721809642478344600}
+  settingsButton: {fileID: 5721809641703836013}
+  shopButton: {fileID: 5721809642687479403}
+  rateUsButton: {fileID: 5721809642591715084}
+  leaderboardButton: {fileID: 5721809641460590147}
 --- !u!1 &5721809642478344602
 GameObject:
   m_ObjectHideFlags: 0
@@ -790,7 +790,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5721809642464296004}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -891,7 +891,7 @@ GameObject:
   - component: {fileID: 5402941065505880673}
   - component: {fileID: 8701385872045397677}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: RateUsText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

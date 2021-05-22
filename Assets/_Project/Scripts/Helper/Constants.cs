@@ -46,7 +46,7 @@
     {
         public static class Manager
         {
-            public const string MANAGER = " Manager";
+            public const string MANAGER = "Manager";
 
             public const string ADS = "Ads" + MANAGER;
             public const string AUDIO = "Audio" + MANAGER;
@@ -60,13 +60,15 @@
 
         public static class Panel
         {
-            public const string DEATH_TIMER_PANEL = "DeathTimerPanel";
-            public const string GAME_PANEL = "GamePanel";
-            public const string MAIN_MENU_PANEL = "MainMenuPanel";
-            public const string PREPARE_PANEL = "PreparePanel";
-            public const string RESULT_PANEL = "ResultPanel";
-            public const string SETTINGS_PANEL = "SettingsPanel";
-            public const string SHOP_PANEL = "ShopPanel";
+            public const string PANEL = "Panel";
+
+            public const string DEATH_COUNTER = "DeathCounter" + PANEL;
+            public const string GAME = "Game" + PANEL;
+            public const string MAIN_MENU = "MainMenu" + PANEL;
+            public const string PREPARE = "Prepare" + PANEL;
+            public const string RESULT = "Result" + PANEL;
+            public const string SETTINGS = "Settings" + PANEL;
+            public const string SHOP = "Shop" + PANEL;
         }
 
         public static class Canvas
@@ -85,7 +87,7 @@
         public const string MP4 = ".mp4";
         public const string PNG = ".png";
     }
-    
+
     public static class AdPlacement
     {
         public const string INTERSTITIAL = "interstitial";
