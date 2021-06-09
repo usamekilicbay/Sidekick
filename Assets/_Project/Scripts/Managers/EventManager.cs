@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SaveMold;
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -54,4 +55,10 @@ public class EventManager : Singleton<EventManager>
     public Action ShowRewardedAd;
     #endregion
 
+
+    #region SAVE
+    public Action<Settings> SaveSettings;
+    public Action LoadSettings;
+    public Action<Settings> UpdateSettings;
+    #endregion
 }

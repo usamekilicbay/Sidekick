@@ -1,4 +1,6 @@
-﻿namespace Constants
+﻿using UnityEngine;
+
+namespace Constants
 {
     public static class Layer
     {
@@ -92,5 +94,14 @@
     {
         public const string INTERSTITIAL = "interstitial";
         public const string REWARDED = "rewarded";
+    }
+
+    public static class LocalDataPath
+    {
+        public static readonly string SAVE = Application.persistentDataPath + "/SAVE/";
+        public static readonly string CONSUMABLES = SAVE + "Consumables/";
+        public static readonly string INVENTORY = SAVE + "Inventory/";
+        public static readonly string PROGRESS = SAVE + "Progress/";
+        public static readonly string SETTINGS = SAVE + "Settings/";
     }
 }

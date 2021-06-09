@@ -3,10 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Mold
+namespace SaveMold
 {
     [Serializable]
-    public class Profile
+    public struct Profile
     {
         public string userName;
         public int coinCount;
@@ -16,7 +16,7 @@ namespace Mold
     }
 
     [Serializable]
-    public class Settings
+    public struct Settings
     {
         public bool isMusicOpen;
         public bool isSFXOpen;

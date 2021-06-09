@@ -1,18 +1,66 @@
-using System.Collections;
-using System.Collections.Generic;
+using SaveMold;
+using System;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UI;
 
-public class SettingsPanel : MonoBehaviour
+public class SettingsPanel : EventProvider
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private Toggle musicToggle;
+    [SerializeField] private Toggle sfxToggle;
+    [SerializeField] private Toggle vibrationToggle;
+
+    protected override void Awake()
     {
-        
+        base.Awake();
+
+        Init();
     }
 
-    // Update is called once per frame
-    void Update()
+    protected override void OnDestroy()
     {
-        
+        base.OnDestroy();
+    }
+
+    protected override void Subscribe()
+    {
+        EventManager.Instance.UpdateSettings += UpdateSettings;
+    }
+
+    protected override void Unsubscribe()
+    {
+        EventManager.Instance.UpdateSettings -= UpdateSettings;
+    }
+
+    private void Init()
+    {
+        musicToggle.onValueChanged.AddListener(ChangeToggle());
+        sfxToggle.onValueChanged.AddListener(ChangeToggle());
+        vibrationToggle.onValueChanged.AddListener(ChangeToggle());
+    }
+
+    private void UpdateSettings(Settings settings)
+    {
+        musicToggle.isOn = settings.isMusicOpen;
+        sfxToggle.isOn = settings.isSFXOpen;
+        vibrationToggle.isOn = settings.isVibrationOpen;
+    }
+
+
+    private UnityAction<bool> ChangeToggle()
+    {
+        SaveSettings();
+
+        return null;
+    }
+
+    private void SaveSettings()
+    {
+        EventManager.Instance.SaveSettings(new Settings
+        {
+            isMusicOpen = musicToggle.isOn,
+            isSFXOpen = sfxToggle.isOn,
+            isVibrationOpen = vibrationToggle.isOn
+        });
     }
 }
